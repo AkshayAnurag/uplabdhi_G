@@ -15,6 +15,10 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
   mode: 'development', // Added mode for clarity, can be 'production' as well
