@@ -1,0 +1,91 @@
+/* General body styling */
+body {
+  font-family: sans-serif;
+  margin: 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  height: 100vh; /* Full viewport height */
+  width: 250px;   /* Default width when open */
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #f0f0f0; /* Updated background color */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  transition: width 0.5s ease; /* Transition for width change */
+  padding: 20px; /* Updated padding */
+  box-shadow: 2px 0 5px rgba(0,0,0,0.1); /* Optional shadow */
+}
+
+.sidebar-closed {
+  width: 0; /* Width when closed */
+  padding: 20px; /* Keep padding consistent, or adjust if content visibility changes */
+  /* If no content is visible when closed, padding might be set to 0 or just rely on width:0 */
+  /* For now, keeping it consistent with the open state's padding property */
+}
+
+/* Sidebar internal content styling */
+.sidebar-section {
+  padding: 8px 0; /* Adjusted padding to be more specific to section title vs items */
+  text-decoration: none;
+  font-size: 18px;
+  color: #333; /* Darker color for better readability */
+  display: block;
+  margin-bottom: 8px; /* Space below section title */
+}
+
+.sidebar-item {
+  padding: 4px 0px; /* Adjusted padding for items, assuming section handles horizontal padding */
+  font-size: 16px;
+  color: #555; /* Slightly lighter than section title */
+  display: block; /* Ensure items take full width within their container if needed */
+  margin-bottom: 4px; /* Space between items */
+}
+
+/* Main Content Styles */
+.main-content {
+  transition: margin-left 0.5s ease; /* Using 0.5s as previously implemented */
+  padding: 20px;
+  margin-left: 290px; /* Default margin: sidebar width (250px) + its padding (2*20px=40px) */
+                      /* This needs to be exact. If sidebar padding is inside its width, this is just 250px */
+                      /* Let's assume sidebar's specified width: 250px is the total visible block */
+                      /* So, main content margin-left should be 250px. */
+}
+
+/* After reviewing box model: if width:250px and padding:20px, total space taken by sidebar is 250px.
+   The padding is *inside* the width. So main content margin-left should be 250px.
+   I will correct .main-content's margin-left.
+*/
+.main-content {
+  transition: margin-left 0.5s ease;
+  padding: 20px;
+  margin-left: 250px; /* Corrected: Should match the sidebar's width property */
+  /* width: calc(100% - 250px); /* This might be needed if not full width by default */
+}
+
+
+.main-content-sidebar-closed {
+  margin-left: 0;
+  /* width: 100%; /* Ensure full width when sidebar is closed */
+}
+
+/* Toggle Button Styles */
+.toggle-button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 0 20px 0; /* Some margin for spacing */
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.toggle-button:hover {
+  background-color: #45a049;
+}
